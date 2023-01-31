@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import '../styles/Footer.css'
 
+function checkValue(value) {
+	if (!value.includes('@')) {
+		alert("Attention, il n'y a pas d'@, ceci n'est pas une adresse valide.")
+	}
+}
+
 function Footer() {
 	const [inputValue, setInputValue] = useState('')
 
@@ -10,6 +16,14 @@ function Footer() {
 				Pour les passionné·e·s de plantes 🌿🌱🌵
 			</div>
 			<div className='lmj-footer-elem'>Laissez-nous votre mail :</div>
+			<div className='lmj-footer-elem'>
+				<input
+					type='email'
+					value={inputValue}
+					onChange={(e) => setInputValue(e.target.value)}
+					onBlur={() => checkValue(inputValue)}
+				/>
+			</div>
 		</footer>
 	)
 }
